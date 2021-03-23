@@ -20,7 +20,7 @@ for i = 1:num_frames
 end
 frames = uint8(frames); %rgb friendly
 
-%% setup
+% setup
 
 % parameters according to the paper
 padding = 1;					%extra area surrounding the target
