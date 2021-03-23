@@ -1,6 +1,6 @@
 clc; close all; clear;
 
-%% parameters
+% parameters
 tau = 100;
 max_iter = 100;
 alpha = 0.9;
@@ -12,7 +12,7 @@ hallway_original2 = imread('DanaHallWay2/DSC_0287.JPG');
 I1 = rgb2gray(hallway_original1);
 I2 = rgb2gray(hallway_original2);
 
-%% apply Harris corner detection
+% apply Harris corner detection
 c1 = harris(I1, 4, 25000);
 c2 = harris(I2, 4, 25000);
 
@@ -28,7 +28,7 @@ hold on
 plot(c2(:,2),c2(:,1),'r*')
 hold off
 
-%% Normalized Cross Correlation
+% Normalized Cross Correlation
 
 % corrs are the correlation points
 corrs = [];
@@ -96,7 +96,7 @@ for i = 1:size(corrs,1)
 end
 hold off
 
-%% find a homography
+% find a homography
 H = homography_ransac(corrs, tau, max_iter, alpha);
 disp('Homography:');
 disp(H);
@@ -105,15 +105,15 @@ disp(H);
 %disp(H2);
 cf1 = corrs(:,1:2);
 cf2 = corrs(:,3:4);
-%% warp the image
+% warp the image
 T = affine2d(H.');
 %T = estimateGeometricTransform(cf1,cf2,'projective');
 I2 = imwarp(I1, T);
 
-%% mosaic
+% mosaic
 Iout = warp_img(I2, H, I1);
 
-%% plot
+% plot
 figure;
 imagesc(I1);
 figure;

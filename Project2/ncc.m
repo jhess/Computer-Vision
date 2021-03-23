@@ -1,4 +1,4 @@
-%% Normalized Cross Correlation
+% Normalized Cross Correlation
 
 % corrs are the correlation points
 corrs = [];
