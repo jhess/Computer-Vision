@@ -1,4 +1,4 @@
-%% load video/extract frames
+% load video/extract frames
 clear all
 close all
 
@@ -47,7 +47,7 @@ yf = fft2(y);
 cos_window = hann(sz(1)) * hann(sz(2))';
 
 
-%% iterate over frames
+% iterate over frames
 
 use_kalman = true; %t for kalman based occlusion recovery, f for only tracking
 

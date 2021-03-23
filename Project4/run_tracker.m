@@ -63,7 +63,7 @@ pos_values = [];
 occlusion_frames = [];
 
 for frame = 1:numel(img_files)
-    %% load and process image
+    % load and process image
 	% load image
 	im = imread([video_path img_files{frame}]);
     % convert to grayscale
@@ -77,12 +77,12 @@ for frame = 1:numel(img_files)
 	
 	tic()
 	
-	%% extract and pre-process subwindow
+	% extract and pre-process subwindow
 	x = get_subwindow(im, pos, sz, cos_window);
 	
     rect_color = 'g';
     
-    %% locate target in the subwindow
+    % locate target in the subwindow
 	if frame > 1
 		% calculate response of the classifier at all locations
 		k = dense_gauss_kernel(sigma, x, z);
@@ -236,10 +236,10 @@ for frame = 1:numel(img_files)
         pos_values(1,:) = start_pos;
     end
 	
-	%% get subwindow at current estimated target position, to train classifer
+	% get subwindow at current estimated target position, to train classifer
 	x = get_subwindow(im, pos, sz, cos_window);
 	
-	%% Kernel Regularized Least-Squares, calculate alphas (in Fourier domain)
+	% Kernel Regularized Least-Squares, calculate alphas (in Fourier domain)
 	k = dense_gauss_kernel(sigma, x);
 	new_alphaf = yf ./ (fft2(k) + lambda);   %(Eq. 7)
 	new_z = x;
@@ -253,11 +253,11 @@ for frame = 1:numel(img_files)
 		z = (1 - interp_factor) * z + interp_factor * new_z;
 	end
 	
-	%% save position and calculate FPS
+	% save position and calculate FPS
 	positions(frame,:) = pos;
 	time = time + toc();
 	
-	%% visualization
+	% visualization
 	rect_position = [pos([2,1]) - target_sz([2,1])/2, target_sz([2,1])];
     if frame == 1  %first frame, create GUI
         figure('IntegerHandle','off', 'Name',['Tracker - ' video_path])
