@@ -2,7 +2,7 @@
 Computer Vision projects
 
 ## Contributors
-Justin Hess
+Justin Hess </br>
 Jordan Helderman
 
 ## Project 1 - Motion Detection via Spatial and Temporal Filtering
