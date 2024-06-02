@@ -1,5 +1,9 @@
 # Computer-Vision
-Code and project work for Computer Vision
+Computer Vision projects
+
+## Contributors
+Justin Hess
+Jordan Helderman
 
 ## Project 1 - Motion Detection via Spatial and Temporal Filtering
 This project uses various algorithms which utilize
@@ -14,7 +18,6 @@ binary mask by thresholding the absolute value of the temporal derivatives and
 combined the result with the mask to highlight the pixels around the moving
 objects. Several 2D spatial smoothing algorithms were also used including two
 box filters and a gaussian filter with varying the sigma value.
-
 
 ## Project 2 - Image Mosaicing
 This projects utilizes various scripts and function to create a projective transformation
